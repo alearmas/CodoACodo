@@ -25,9 +25,14 @@ public class DigipetApplication implements CommandLineRunner {
 		System.out.println("¿Cómo se llamará tu mascota?");
 		String name = scan.nextLine();
 		Pet pet = new Pet(name);
+		displayMenu(pet);
+	}
+
+	private void displayMenu(Pet pet) {
 		System.out.println("¿Qué quieres hacer con " + pet.getName() + "?");
 		System.out.println("1. Alimentarlo");
 		System.out.println("2. Jugar");
+		System.out.println("3. Dormir");
 		int num = scan.nextInt();
 		switch (num) {
 			case 1 :
@@ -36,8 +41,12 @@ public class DigipetApplication implements CommandLineRunner {
 			case 2:
 				pet.playPet();
 				break;
+			case 3:
+				pet.sleepPet();
+				System.exit(0);
 			default:
-				break;
+				System.out.println("Actividad no soportada");
 		}
+		displayMenu(pet);
 	}
 }

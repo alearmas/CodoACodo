@@ -4,5 +4,6 @@ public interface PetImpl {
 
     void feedPet();
     void playPet();
+    void sleepPet();
 
 }

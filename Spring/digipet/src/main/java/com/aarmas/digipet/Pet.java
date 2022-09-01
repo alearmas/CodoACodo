@@ -42,8 +42,7 @@ public class Pet implements PetImpl {
         switch (state) {
             case "happy":
                 setLevel(getLevel() + 1);
-                System.out.println(getName() + " ha incrementado su nivel");
-                System.out.println("Nuevo nivel " + getLevel());
+                System.out.println(getName() + " ha incrementado su nivel (Nuevo nivel - " + getLevel() + ")");
                 break;
             case "hungry":
                 setState("happy");
@@ -64,8 +63,7 @@ public class Pet implements PetImpl {
         switch (state) {
             case "happy":
                 setLevel(getLevel() + 2);
-                System.out.println(getName() + " ha incrementado su nivel");
-                System.out.println("Nuevo nivel " + getLevel());
+                System.out.println(getName() + " ha incrementado su nivel (Nuevo nivel - " + getLevel() + ")");
                 break;
             case "bored":
                 setState("happy");
@@ -75,6 +73,21 @@ public class Pet implements PetImpl {
                 System.out.println(getName() + " tiene hambre y no quiere jugar");
                 break;
             default:
+                break;
+        }
+    }
+
+    public void sleepPet() {
+        String state = getState();
+        switch (state) {
+            case "happy":
+                System.out.println(getName() + " se va a dormir feliz");
+                break;
+            case "bored":
+                System.out.println(getName() + " se va a dormir aburrido");
+                break;
+            case "hungry":
+                System.out.println(getName() + " se va a dormir con hambre");
                 break;
         }
     }
