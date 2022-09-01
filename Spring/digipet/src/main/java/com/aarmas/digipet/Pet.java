@@ -8,9 +8,10 @@ public class Pet implements PetImpl {
 
     public Pet(String name) {
         this.name = name;
+        this.level = 1;
+        this.state = "hungry";
     }
 
-    @Override
     public String getName() {
         return name;
     }
@@ -37,14 +38,44 @@ public class Pet implements PetImpl {
 
     @Override
     public void feedPet() {
-        /* Si está hambrienta, se pone contenta.
-           Si está contenta, level++.
-           Si está aburrida, y hace más de 80 minutos que está aburrida, entonces se pone contenta.
-           Si está aburrida desde hace 80 minutos o menos, entonces no le pasa nada, no cambia nada.*/
+        String state = getState();
+        switch (state) {
+            case "happy":
+                setLevel(getLevel() + 1);
+                System.out.println(getName() + " ha incrementado su nivel");
+                System.out.println("Nuevo nivel " + getLevel());
+                break;
+            case "hungry":
+                setState("happy");
+                System.out.println("Ahora que comió, " + getName() +" se ha puesto feliz");
+                break;
+            case "bored":
+                setState("happy");
+                System.out.println("Ha cambiado su estado a feliz");
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
     public void playPet() {
-
+        String state = getState();
+        switch (state) {
+            case "happy":
+                setLevel(getLevel() + 2);
+                System.out.println(getName() + " ha incrementado su nivel");
+                System.out.println("Nuevo nivel " + getLevel());
+                break;
+            case "bored":
+                setState("happy");
+                System.out.println("Ahora que hemos jugado, " + getName() + " se ha puesto feliz");
+                break;
+            case "hungry":
+                System.out.println(getName() + " tiene hambre y no quiere jugar");
+                break;
+            default:
+                break;
+        }
     }
 }

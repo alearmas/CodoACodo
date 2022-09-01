@@ -1,13 +1,43 @@
 package com.aarmas.digipet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
 @SpringBootApplication
-public class DigipetApplication {
+public class DigipetApplication implements CommandLineRunner {
+
+	private static Logger LOG = LoggerFactory.getLogger(DigipetApplication.class);
+	Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		SpringApplication.run(DigipetApplication.class, args);
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		LOG.info("EXECUTING : command line runner");
+		System.out.println("¿Cómo se llamará tu mascota?");
+		String name = scan.nextLine();
+		Pet pet = new Pet(name);
+		System.out.println("¿Qué quieres hacer con " + pet.getName() + "?");
+		System.out.println("1. Alimentarlo");
+		System.out.println("2. Jugar");
+		int num = scan.nextInt();
+		switch (num) {
+			case 1 :
+				pet.feedPet();
+				break;
+			case 2:
+				pet.playPet();
+				break;
+			default:
+				break;
+		}
+	}
 }
