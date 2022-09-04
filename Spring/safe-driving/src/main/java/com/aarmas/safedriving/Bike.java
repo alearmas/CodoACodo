@@ -27,4 +27,8 @@ public class Bike extends Vehicle {
         this.helmet = helmet;
     }
 
+    public static boolean safeBike(int mirrors, int maxSpeed) {
+        return mirrors >= 2 && maxSpeed <= 160;
+    }
+
 }

@@ -2,18 +2,22 @@ package com.aarmas.safedriving;
 
 public class Driver extends Person {
 
-    private Integer drivingLicence;
+    private int drivingLicence;
 
     public Driver(String firstname, String lastname) {
         super(firstname, lastname);
     }
 
-    public Integer getDrivingLicence() {
+    public int getDrivingLicence() {
         return drivingLicence;
     }
 
-    public void setDrivingLicence(Integer drivingLicence) {
+    public void setDrivingLicence(int drivingLicence) {
         this.drivingLicence = drivingLicence;
+    }
+
+    public static boolean hasLicense(int drivingLicence) {
+        return drivingLicence > 1;
     }
 
     @Override

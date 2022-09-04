@@ -17,4 +17,8 @@ public class Car extends Vehicle {
         this.extraWheel = extraWheel;
     }
 
+    public static boolean safeCar(boolean extraWheel, int maxSpeed) {
+        return extraWheel && maxSpeed <= 140;
+    }
+
 }
